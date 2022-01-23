@@ -58,4 +58,16 @@ public class VisitorService {
     public void deleteById(int id ){
         repo.deleteById(id);
     }
+
+    public List<PragraVisitor> getAllbyLastName(String lastname) {
+        return repo.findAllByLastName(lastname);
+    }
+
+    public List<PragraVisitor> getAllByLastNameAndFirstName(String lastname, String fistname) {
+        return repo.findAllByLastNameAndFirstName(lastname,fistname);
+    }
+
+    public List<PragraVisitor> getAllbyFirstName(String firstname) {
+        return  repo.findAllByFirstName(firstname);
+    }
 }
