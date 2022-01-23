@@ -16,7 +16,7 @@ public class DevConfig {
         return
                 DataSourceBuilder
                         .create()
-                        .url("jdbc:h2:mem:appdb")
+                        .url("jdbc:h2:./app.db")
                         .username("sa")
                         .password("")
                         .build();

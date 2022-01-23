@@ -20,7 +20,7 @@ public class SpringjpaApplication {
 		SpringApplication.run(SpringjpaApplication.class, args);
 	}
 
-	@Bean
+
 	CommandLineRunner runner() {
 		return args -> {
 			PragraVisitor visitor = PragraVisitor.builder()

@@ -5,8 +5,11 @@ import io.pragra.learning.pragravisit.exceptions.InvalidDataException;
 import io.pragra.learning.pragravisit.repo.VisitorRepo;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class VisitorService {
@@ -21,15 +24,27 @@ public class VisitorService {
     }
 
     public PragraVisitor updateVisitor( PragraVisitor visitor) {
+        validateId(visitor.getId());
+//        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/g");
+//
+//        if (!pattern.matcher(visitor.getEmail()).matches()) {
+//            throw new InvalidDataException("Email is not valid");
+//        }
+        visitor.setUpdateDate(Instant.now());
+
         return repo.save(visitor);
     }
 
     public Optional<PragraVisitor> getById(Integer id)  {
-        if(id==null ||  id < 0) {
-            throw  new InvalidDataException("ID pass is not valid");
-        }
+        validateId(id);
         return repo.findById(id);
 
+    }
+
+    private void validateId(Integer id) {
+        if(id ==null ||  id < 0) {
+            throw  new InvalidDataException("ID pass is not valid");
+        }
     }
 
     public List<PragraVisitor> getAll(){
