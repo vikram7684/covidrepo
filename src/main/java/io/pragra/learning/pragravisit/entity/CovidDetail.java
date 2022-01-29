@@ -7,7 +7,8 @@ import java.time.Instant;
 
 @Data
 @Entity
-public class CovidDetails {
+@Table(name = "covid_details")
+public class CovidDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

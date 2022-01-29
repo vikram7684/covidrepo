@@ -9,9 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @ComponentScan(basePackages = {"com.bulsoft","io.pragra.learning.pragravisit"})
 @SpringBootApplication
+@EnableSwagger2
 public class SpringjpaApplication {
 
 	private VisitorService service;

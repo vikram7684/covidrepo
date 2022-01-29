@@ -38,7 +38,7 @@ public class PragraVisitor {
 
     @OneToMany
     @JoinColumn(name = "visitor_id")
-    private List<CovidDetails> covidDetails;
+    private List<CovidDetail> covidDetails;
 
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private VisitorId visitorId;
