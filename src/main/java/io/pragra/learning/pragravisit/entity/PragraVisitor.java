@@ -23,15 +23,23 @@ public class PragraVisitor {
     private String firstName;
     private String lastName;
     private String phone;
+    @Column(unique = true, nullable = false)
     private String email;
     private Instant createDate;
     private Instant updateDate;
+
+    @Column()
     private StatusEnum status;
-    @Transient
+
+    //@Transient
+    @Column(length = 3000)
     private String greetingOfDay;
 
 
     @OneToMany
     @JoinColumn(name = "visitor_id")
     private List<CovidDetails> covidDetails;
+
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private VisitorId visitorId;
 }

@@ -1,19 +1,25 @@
 package io.pragra.learning.pragravisit;
 
+import com.bulsoft.DummyService;
 import io.pragra.learning.pragravisit.entity.PragraVisitor;
 import io.pragra.learning.pragravisit.service.VisitorService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+
+@ComponentScan(basePackages = {"com.bulsoft","io.pragra.learning.pragravisit"})
 @SpringBootApplication
 public class SpringjpaApplication {
 
 	private VisitorService service;
+	private DummyService dummyService;
 
-	public SpringjpaApplication(VisitorService service) {
+	public SpringjpaApplication(VisitorService service, DummyService dummyService) {
 		this.service = service;
+		this.dummyService = dummyService;
 	}
 
 	public static void main(String[] args) {
@@ -21,14 +27,10 @@ public class SpringjpaApplication {
 	}
 
 
+	@Bean
 	CommandLineRunner runner() {
 		return args -> {
-			PragraVisitor visitor = PragraVisitor.builder()
-					.firstName("Chirag")
-					.lastName("Dhawan")
-					.build();
-
-			System.out.println(service.createVisitor(visitor));
+			dummyService.printSomeDetails();
 		};
 	}
 }

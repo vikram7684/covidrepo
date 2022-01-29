@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class VisitorController {
@@ -37,7 +38,9 @@ public class VisitorController {
     @GetMapping(value = "/api/visitor/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public PragraVisitor getAllVisitor(@PathVariable("id") Integer id){
-        return service.getById(id).orElseThrow();
+        System.out.println("Got id" + id);
+        Optional<PragraVisitor> byId = service.getById(id);
+        return byId.orElseThrow();
     }
 
     @PutMapping(value = "/api/visitor",
