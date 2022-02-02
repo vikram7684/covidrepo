@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/pragra
-    username: app
-    password: app
+    username: appuser
+    password: appuser
   h2:
     console:
       enabled: true
